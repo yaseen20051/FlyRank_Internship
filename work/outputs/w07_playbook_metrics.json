@@ -1,0 +1,51 @@
+{
+  "selected_method": "Logistic Regression",
+  "selection_metric": "Precision@20",
+  "model_precision_at_20": 0.7,
+  "baseline_precision_at_20": 0.5,
+  "heldout_pages": 3352,
+  "archetypes": [
+    {
+      "archetype": "model_rule_disagreement",
+      "pages": 2252,
+      "observed_decline_proxy_rate": 0.5341918294849023,
+      "median_rank_gap": 1400.0
+    },
+    {
+      "archetype": "monitor",
+      "pages": 429,
+      "observed_decline_proxy_rate": 0.5221445221445221,
+      "median_rank_gap": 190.0
+    },
+    {
+      "archetype": "priority_decline_review",
+      "pages": 671,
+      "observed_decline_proxy_rate": 0.5827123695976155,
+      "median_rank_gap": 2361.0
+    }
+  ],
+  "public_summary": [
+    {
+      "risk_tier": "monitor",
+      "page_count": 1675,
+      "observed_decline_proxy_rate": 0.5247761194029851
+    },
+    {
+      "risk_tier": "priority_review",
+      "page_count": 671,
+      "observed_decline_proxy_rate": 0.5827123695976155
+    },
+    {
+      "risk_tier": "review",
+      "page_count": 1006,
+      "observed_decline_proxy_rate": 0.5447316103379721
+    }
+  ],
+  "public_figure": "work/figures/w07_queue_tiers.png",
+  "limitations": [
+    "single March evaluation",
+    "proxy outcome",
+    "no causal intervention evidence",
+    "no multi-month temporal validation"
+  ]
+}
