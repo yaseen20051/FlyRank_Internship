@@ -1,0 +1,57 @@
+{
+  "lane": "Content-Day Performance / Decline Risk",
+  "feature_window": [
+    "2026-03-01",
+    "2026-03-15"
+  ],
+  "outcome_window": [
+    "2026-03-16",
+    "2026-03-31"
+  ],
+  "split": "GroupShuffleSplit by client_hash_id",
+  "random_seed": 42,
+  "train_rows": 13481,
+  "test_rows": 3352,
+  "train_clients": 22,
+  "test_clients": 6,
+  "test_base_rate": 0.5423627684964201,
+  "features": [
+    "early_impressions",
+    "early_clicks",
+    "early_clicks_per_day",
+    "early_avg_position",
+    "early_days",
+    "content_age_days",
+    "days_since_update"
+  ],
+  "comparison": [
+    {
+      "method": "Week-4 rule baseline",
+      "base_rate": 0.5423627684964201,
+      "precision_at_10": 0.4,
+      "precision_at_20": 0.5,
+      "precision_at_50": 0.48,
+      "average_precision": 0.5296715929810976,
+      "roc_auc": 0.4836627567580748
+    },
+    {
+      "method": "Logistic Regression",
+      "base_rate": 0.5423627684964201,
+      "precision_at_10": 0.7,
+      "precision_at_20": 0.7,
+      "precision_at_50": 0.78,
+      "average_precision": 0.5736461414658187,
+      "roc_auc": 0.5275235476611546
+    },
+    {
+      "method": "Random Forest",
+      "base_rate": 0.5423627684964201,
+      "precision_at_10": 0.7,
+      "precision_at_20": 0.65,
+      "precision_at_50": 0.62,
+      "average_precision": 0.578792035766277,
+      "roc_auc": 0.5419459970768915
+    }
+  ],
+  "warning": "Single March within-month proxy evaluation; not a multi-month forward deployment test."
+}
