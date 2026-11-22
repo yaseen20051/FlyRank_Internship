@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A reproducible study of content-day performance and decline-risk triage using the FlyRank ML Internship dataset.">
+<title>Content-Day Performance & Decline-Risk Triage | Research Paper</title>
+<style>
+:root{--ink:#172033;--muted:#5e687b;--line:#e3e8ef;--paper:#fff;--wash:#f5f7fa;--blue:#2458a6;--blue2:#eaf1fc;--green:#17734a;--amber:#93620b;--max:1080px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.7 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--blue)}.wrap{max-width:var(--max);margin:auto;padding:0 24px}.top{background:#101b2e;color:white;padding:14px 0}.top .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center}.brand{font-weight:750;letter-spacing:.02em}.top a{color:#dce8ff;text-decoration:none;font-size:14px}
+.hero{background:linear-gradient(135deg,#101b2e,#1c3762);color:white;padding:76px 0 68px}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:12px;font-weight:750;color:#b9d0fa}.hero h1{font-size:clamp(34px,5vw,56px);line-height:1.08;letter-spacing:-.035em;max-width:850px;margin:18px 0}.hero p{font-size:18px;color:#d8e2f2;max-width:780px}.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:1px solid #5c7190;border-radius:99px;padding:5px 12px;font-size:12px;color:#e4edfb}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px;align-items:start;margin:38px auto}.toc{position:sticky;top:20px;background:white;border:1px solid var(--line);border-radius:14px;padding:18px}.toc strong{display:block;margin-bottom:8px}.toc a{display:block;color:var(--muted);text-decoration:none;font-size:13px;padding:5px 0}.toc a:hover{color:var(--blue)}
+main{min-width:0}.section{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px;margin-bottom:20px;box-shadow:0 4px 18px #15274408}.section h2{font-size:24px;letter-spacing:-.02em;margin:0 0 14px}.section h3{font-size:17px;margin:22px 0 8px}.section p{color:#394459}.abstract{font-size:17px;color:#27344b!important}.note{background:var(--blue2);border-left:4px solid var(--blue);padding:14px 16px;border-radius:8px;color:#273b5b;margin:18px 0}.caution{background:#fff7e8;border-left:4px solid #c58b22;padding:14px 16px;border-radius:8px;color:#60440e;margin:18px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}.stat{background:#f7f9fc;border:1px solid var(--line);padding:16px;border-radius:12px}.stat b{display:block;font-size:27px;line-height:1.2;color:#1e477f}.stat span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}th{background:#f4f7fb;color:#3d4a60;font-weight:700}td.num{text-align:right;font-variant-numeric:tabular-nums}
+.bars{display:grid;gap:14px;margin:20px 0}.barrow{display:grid;grid-template-columns:155px 1fr 60px;gap:12px;align-items:center;font-size:13px}.track{height:13px;background:#e9eef5;border-radius:99px;overflow:hidden}.fill{height:100%;background:#376bb5;border-radius:99px}.barrow strong{text-align:right;font-variant-numeric:tabular-nums}
+.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;position:relative;padding:0 0 18px 44px;color:#394459}.steps li:before{content:counter(step);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--blue2);color:var(--blue);font-weight:750;text-align:center;line-height:28px}
+footer{padding:32px 0 55px;color:var(--muted);font-size:13px}.footerbox{border-top:1px solid var(--line);padding-top:22px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.toc{position:static}.toc nav{display:grid;grid-template-columns:1fr 1fr;column-gap:12px}.stats{grid-template-columns:1fr 1fr}.section{padding:22px}.hero{padding:54px 0}.barrow{grid-template-columns:115px 1fr 48px}}
+@media(max-width:460px){.stats{grid-template-columns:1fr 1fr}.barrow{grid-template-columns:1fr 48px}.barrow .track{grid-column:1/3;grid-row:2}.top .wrap{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="brand">FLYRANK · RESEARCH NOTE</div><a href="https://github.com/yaseen20051/FlyRank_Internship">View project repository ↗</a></div></header>
+<section class="hero"><div class="wrap">
+<div class="eyebrow">Applied machine learning · Search intelligence</div>
+<h1>Content-Day Performance &amp; Decline-Risk Triage</h1>
+<p>A leakage-aware ranking workflow for prioritizing human investigation of content items showing a possible decline in organic-search clicks.</p>
+<div class="meta"><span class="pill">Refresh / Content Opportunity Scoring</span><span class="pill">March 2026 evaluation</span><span class="pill">Research capstone</span></div>
+</div></section>
+<div class="wrap layout">
+<aside class="toc"><strong>Contents</strong><nav>
+<a href="#abstract">Abstract</a><a href="#introduction">Introduction</a><a href="#data">Data</a><a href="#method">Methodology</a><a href="#results">Results</a><a href="#limitations">Limitations</a><a href="#recommendations">Ranked recommendations</a><a href="#repro">Reproducibility</a><a href="#credit">Acknowledgments</a>
+</nav></aside>
+<main>
+<section class="section" id="abstract"><h2>Abstract</h2>
+<p class="abstract">This study asks whether early search-performance and content-age signals can help rank eligible content items for investigation when organic-search clicks later decline. We construct a page-level March 2026 dataset from the FlyRank ML Internship pseudonymized warehouse, using March 1–15 as the feature window and March 16–31 as the outcome window. A fixed early-signal rule is compared with Logistic Regression and Random Forest using a client-group holdout, with a ≥20% reduction in clicks per measured day serving as a proxy outcome. In the recorded held-out results, Logistic Regression achieved Precision@20 of 0.70, compared with 0.50 for the Week-5 baseline implementation, while Random Forest also achieved 0.70. These findings support a human-reviewed investigation queue, not causal claims about content refreshes or guarantees of future performance.</p>
+</section>
+<section class="section" id="introduction"><h2>1. Introduction and problem statement</h2>
+<p>Content and SEO teams cannot investigate every page with equal depth. The operational decision addressed here is: <strong>which eligible content items should a reviewer inspect first when the available early signals suggest possible future search-performance decline?</strong></p>
+<p>The project frames this as a ranking and triage problem. Its output is a priority list with reason codes and suggested checks. It does not automatically rewrite, delete, redirect, or otherwise modify content.</p>
+</section>
+<section class="section" id="data"><h2>2. Data</h2>
+<p><strong>Source release:</strong> FlyRank ML Internship pseudonymized warehouse release, build <code>flyrank_pseudonymized_warehouse_release_v20260703</code>.</p>
+<p><strong>Tables:</strong> <code>fact_content_daily_performance</code> for daily GSC observations and <code>dim_content</code> for content dates. The fact-table grain is report date × client × content. The analysis uses the March 2026 partition.</p>
+<div class="stats">
+<div class="stat"><b>Mar 1–15</b><span>Feature window</span></div><div class="stat"><b>Mar 16–31</b><span>Outcome window</span></div><div class="stat"><b>Mar 16</b><span>Prediction cutoff</span></div><div class="stat"><b>10 days</b><span>Minimum measured days per half</span></div>
+</div>
+<p>Only rows with <code>gsc_data_available IS TRUE</code> count as measured. Eligibility additionally requires at least 100 early impressions and 5 early clicks. The June sample partition is excluded from model development. Pseudonymous identifiers are used only for grouping and local queue management; they are not published here.</p>
+</section>
+<section class="section" id="method"><h2>3. Methodology</h2>
+<h3>Outcome definition</h3><p>The proxy label is 1 when clicks per measured day in March 16–31 are at least 20% lower than in March 1–15, and 0 otherwise. This is an observed change proxy, not a human-verified content-quality or intervention-success label.</p>
+<h3>Features and models</h3><p>Early-window features include impressions, clicks, clicks per day, average position, measured-day count, content age, and days since update. Client identifiers are grouping variables, not model features. The learned models are regularized Logistic Regression and Random Forest.</p>
+<h3>Validation and leakage controls</h3><p>The headline evaluation uses a client-group holdout (20% test, seed 42), so a client does not appear in both training and test partitions. A random-row split was intended only as a diagnostic and is omitted here because its diagnostic receipt was not saved. Late-window metrics, decline labels, trend fields and other target-derived values are excluded from model features.</p>
+<div class="caution"><strong>Baseline comparability caveat.</strong> The frozen Week-4 baseline was documented as <code>log1p(early_impressions)</code>. The Week-5 comparison code applies an additional freshness multiplier. Therefore, the Week-5 baseline result below is the implementation actually evaluated in Week 5, not an exact reproduction of the frozen Week-4 rule. A strict apples-to-apples rerun is required to resolve this difference.</div>
+</section>
+<section class="section" id="results"><h2>4. Results</h2>
+<p>The following values are from the recorded Week-5 grouped-client holdout results. Precision@K measures the fraction of the top K ranked items that match the decline proxy.</p>
+<div class="stats">
+<div class="stat"><b>0.542</b><span>Held-out decline-proxy base rate</span></div><div class="stat"><b>0.70</b><span>Logistic Regression Precision@20</span></div><div class="stat"><b>0.70</b><span>Random Forest Precision@20</span></div><div class="stat"><b>0.50</b><span>Week-5 baseline Precision@20</span></div>
+</div>
+<table><thead><tr><th>Method</th><th class="num">Precision@10</th><th class="num">Precision@20</th><th class="num">Precision@50</th><th class="num">Average Precision</th><th class="num">ROC-AUC</th></tr></thead><tbody>
+<tr><td>Week-5 baseline implementation</td><td class="num">0.40</td><td class="num">0.50</td><td class="num">0.48</td><td class="num">0.529672</td><td class="num">0.483663</td></tr>
+<tr><td><strong>Logistic Regression</strong></td><td class="num"><strong>0.70</strong></td><td class="num"><strong>0.70</strong></td><td class="num"><strong>0.78</strong></td><td class="num">0.573646</td><td class="num">0.527524</td></tr>
+<tr><td>Random Forest</td><td class="num">0.60</td><td class="num">0.70</td><td class="num">0.62</td><td class="num">0.579341</td><td class="num">0.541361</td></tr>
+</tbody></table>
+<h3>Precision@20 comparison</h3>
+<div class="bars">
+<div class="barrow"><span>Week-5 baseline</span><div class="track"><div class="fill" style="width:50%"></div></div><strong>0.50</strong></div>
+<div class="barrow"><span>Logistic Regression</span><div class="track"><div class="fill" style="width:70%"></div></div><strong>0.70</strong></div>
+<div class="barrow"><span>Random Forest</span><div class="track"><div class="fill" style="width:70%"></div></div><strong>0.70</strong></div>
+</div>
+<p>At K=20, both learned models exceed the recorded Week-5 baseline implementation by 0.20 absolute precision. Logistic Regression has the strongest Precision@10 and Precision@50 among these results; Random Forest has the highest Average Precision and ROC-AUC. These metrics describe this held-out March evaluation only.</p>
+</section>
+<section class="section" id="limitations"><h2>5. Limitations and honest framing</h2>
+<ul>
+<li>The outcome is a two-window decline proxy, not a verified diagnosis of content decay.</li>
+<li>Observed changes may reflect query mix, seasonality, SERP layout, ranking shifts, data coverage or tracking changes.</li>
+<li>The study uses one March evaluation window. Client grouping does not substitute for multi-month forward-in-time validation.</li>
+<li>No controlled content-refresh intervention was evaluated; no causal refresh-impact claim is supported.</li>
+<li>The baseline implementation mismatch described in the methodology limits strict interpretation of the model-versus-frozen-rule comparison.</li>
+<li>Precision@K is useful for triage capacity but does not by itself establish business value, ROI or intervention success.</li>
+</ul>
+<p>Accordingly, the results are <strong>observed, directional and decision-support oriented</strong>. They should not be interpreted as proof of Google's ranking algorithm or as a guarantee that a recommended edit will recover clicks.</p>
+</section>
+<section class="section" id="recommendations"><h2>6. Ranked recommendations and action playbook</h2>
+<p>The Week-7 playbook selects Logistic Regression when its Precision@20 is at least that of the Week-5 baseline implementation; otherwise it retains the baseline. The recorded metrics meet that selection condition. It assigns items to three review tiers using relative ranking percentiles.</p>
+<table><thead><tr><th>Priority tier</th><th>Ranking rule</th><th>Recommended human action</th></tr></thead><tbody>
+<tr><td><strong>Priority review</strong></td><td>Top 20% of selected ranking</td><td>Verify GSC coverage, query mix, seasonality and SERP changes; then inspect page intent and content.</td></tr>
+<tr><td><strong>Review</strong></td><td>Next 30%</td><td>Review GSC trend and content context; investigate whether the movement is persistent.</td></tr>
+<tr><td><strong>Monitor</strong></td><td>Remaining 50%</td><td>Recheck in the next reporting window rather than making an immediate change.</td></tr>
+</tbody></table>
+<p>Operational archetypes distinguish priority decline review, model/rule disagreement, and monitor cases. They are triage categories, not semantic content clusters. The safe next step is always investigation by a human reviewer. Do not automatically edit titles, metadata, canonicals, redirects or page content.</p>
+</section>
+<section class="section" id="repro"><h2>7. Reproducibility</h2>
+<p>The project repository contains the weekly notebooks and capstone notebook. The workflow is:</p>
+<ol class="steps">
+<li>Run the Week-4 baseline notebook to create the initial rule and eligible page snapshot.</li>
+<li>Run Week 5 to train Logistic Regression and Random Forest and export held-out predictions and metrics.</li>
+<li>Run Week 6 to audit grouped validation, leakage controls and failure examples.</li>
+<li>Run Week 7 to create the human-review playbook and aggregate queue summary.</li>
+<li>Run the capstone notebook to assemble the research record and verify available receipts.</li>
+</ol>
+<p><a href="https://github.com/yaseen20051/FlyRank_Internship">GitHub repository</a> · <a href="https://github.com/yaseen20051/FlyRank_Internship/tree/main/work/notebooks">Weekly notebooks</a> · <a href="https://github.com/yaseen20051/FlyRank_Internship/blob/main/work/notebooks/capstone.ipynb">Capstone notebook</a></p>
+</section>
+<section class="section" id="credit"><h2>8. Acknowledgments and data credit</h2>
+<p>Built on the <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank ML Internship dataset</a>. The study uses the pseudonymized internship warehouse release. No client names, domains, raw URLs, private queries, credentials or raw exports are included in this public paper.</p>
+</section>
+</main></div>
+<footer><div class="wrap footerbox">Research capstone · Content-Day Performance / Decline-Risk Triage · <a href="https://github.com/yaseen20051/FlyRank_Internship">Source repository</a><br>Results are specific to the recorded March 2026 evaluation and should be revalidated on a later untouched period.</div></footer>
+</body></html>
