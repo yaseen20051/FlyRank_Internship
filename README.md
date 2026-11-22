@@ -11,6 +11,8 @@ This repository contains the weekly assignments and final capstone for the FlyRa
 
 **Lane:** Refresh / Content Opportunity Scoring.
 
+**Research-scope history:** W01–W02 record the initial CTR / Engagement Opportunity exploration. The project subsequently narrowed to content-day decline-risk triage before the modeling phase. W01–W03 are retained as the development history; W04–W07 define the final modeling and action workflow.
+
 Using signals available through March 15, 2026, can eligible content items be ranked by their likelihood of showing a meaningful decline in Google Search Console clicks per measured day during March 16–31, so human reviewers can prioritize investigation?
 
 ## Repository structure
