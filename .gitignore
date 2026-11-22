@@ -1,2 +1,28 @@
-# Generated locally by the Week 4 baseline notebook; regenerate on each run.
-work/outputs/baseline_action_score.csv
+# Python / notebook noise
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+*token*
+*secret*
+
+# Generated outputs: private by default
+work/outputs/*
+!work/outputs/public/
+!work/outputs/public/**
+
+# Private row-level predictions, queues, and intermediate exports
+**/w05_test_predictions.csv
+**/w07_private_action_queue.csv
+**/baseline_action_score.csv
+**/*private*.csv
+**/*predictions*.csv
+**/*action_queue*.csv
+**/*raw_export*.csv
+
+# Generated figures are allowed only when reviewed as public-safe.
+# Keep aggregate charts in work/figures; do not place row-level data here.
