@@ -1,0 +1,7 @@
+check,status,evidence
+Feature/outcome chronology,PASS,Features end before outcome begins.
+Label-derived features,PASS,No forbidden target-derived features found.
+Product flags/scores,PASS,Not included in the Week-5 feature list.
+Client grouping design,PASS,Week-5 receipt records GroupShuffleSplit by client_hash_id; underlying IDs are not independently rechecked here.
+Base rate,PASS,Base rate is included in model evaluation.
+Out-of-sample evaluation,PASS,Week-5 reports metrics on its grouped-client test partition.

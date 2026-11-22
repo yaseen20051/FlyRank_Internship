@@ -1,0 +1,2 @@
+method,base_rate,precision_at_10,precision_at_20,precision_at_50,average_precision,roc_auc
+Logistic Regression,0.5423627684964201,0.7,0.7,0.78,0.5736461414658187,0.5275235476611546
