@@ -1,0 +1,26 @@
+{
+  "lane": "Content-Day Performance / Decline Risk",
+  "prediction_cutoff": "2026-03-16",
+  "feature_window": {
+    "start": "2026-03-01",
+    "end": "2026-03-15"
+  },
+  "outcome_window": {
+    "start": "2026-03-16",
+    "end": "2026-03-31"
+  },
+  "eligible_rows": 16833,
+  "decline_proxy_base_rate": 0.5205845660310106,
+  "baseline_precision_at_k": {
+    "precision_at_10": 0.4,
+    "precision_at_20": 0.3,
+    "precision_at_50": 0.36
+  },
+  "baseline_score": "log1p(early_impressions)",
+  "score_inputs": [
+    "early_impressions"
+  ],
+  "label": "late clicks per measured day <= 0.8 * early clicks per measured day",
+  "output_csv": "work/outputs/baseline_action_score.csv",
+  "note": "Late-window fields define the outcome only; they do not enter the ranking score."
+}
